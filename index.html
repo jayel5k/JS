@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>   
+    let count = 0;
+    function addOne() {
+        count += 1
+        document.getElementById("count").innerHTML = count
+    }
+</script>
+    
+<!-- <% for (let ele of elements) { %>
+    ...
+    // More html elements
+    ... -->
+    <button onclick="addOne()" type="button">Click Here!</button>
+    <span id="count">0</span> 
+<!--     ...
+    // More html elements
+    ...
+<% } %> -->
+</body>
+</html>
