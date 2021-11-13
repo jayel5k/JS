@@ -40,7 +40,14 @@ function delete_row(no)
 }
 
 
-function addOne(button) {
+
+
+
+
+function add_row()
+{
+
+     function addOne(button) {
     console.log(button.nextElementSibling.innerHTML)
     var spanEle = button.nextElementSibling;
     var old = parseInt(spanEle.innerHTML)
@@ -48,16 +55,13 @@ function addOne(button) {
 }
 
 
-
-function add_row()
-{
  var new_name=document.getElementById("new_name").value;
  var new_country=document.getElementById("new_country").value;
  var new_age=document.getElementById("new_age").value;
 	
  var table=document.getElementById("data_table");
  var table_len=(table.rows.length)-1;
- var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'>"+new_country+"</td><td id='age_row"+table_len+"'>"+new_age+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'>"+new_country+"</td><td><input type='button' onclick='addOne(this)' <span>0</span> </td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
 
  document.getElementById("new_name").value="";
  document.getElementById("new_country").value="";
@@ -75,8 +79,7 @@ function add_row()
 
 <tr id="row1">
 <td id="name_row1">Utah Jazz</td>
-<td id="country_row1"><p> <button onclick="addOne(this)" type="button">Click Here!</button>
-    <span>0</span> </p></td>
+<td id="country_row1">Win</td>
 <td id="age_row1">Loss</td>
 <td>
 <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
