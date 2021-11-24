@@ -49,8 +49,8 @@
 
 <tr>
 <td><input type="text" id="new_name"></td>
-<td><input type="text" id="new_country"></td>
-<td><input type="text" id="new_age"></td>
+<td></td>
+<td></td>
 <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
 </tr>
 
@@ -120,22 +120,67 @@ function addOne(button) {
 function add_row(no)
 {
 var new_name=document.getElementById("new_name").value;
- var new_country=document.getElementById("new_country").value;
- var new_age=document.getElementById("new_age").value;
+ //var new_country=document.getElementById("new_country").value;
+ //var new_age=document.getElementById("new_age").value;
   
+
+
+
  var table=document.getElementById("data_table");
  var table_len=(table.rows.length)-1;
- var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'><button onclick='addOne(this)'>Click Here!</button><span>0</span></td><td id='age_row"+table_len+"'><button onclick='addOne(this)'>Click Here!</button><span>0</span></td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'><button onclick='addOne(this)'>Click Here!</button><span>0</span></td><td id='age_row"+table_len+"'><button class='but' onclick='addOne(this)'>Click Here!</button><span>0</span></td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
 
 
  document.getElementById("new_name").value="";
- document.getElementById("new_country").value="";
- document.getElementById("new_age").value="";
+ // document.getElementById("new_country").value="";
+ // document.getElementById("new_age").value="";
 
 
 removeSaveBtns();
 
 
-}</script>
+}
+
+
+</script>
+
+
+
+
+
+<style>/* CSS */
+button {
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+button:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+button:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+
+}
+  </style>
+
+
 </body>
 </html>
