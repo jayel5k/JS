@@ -6,12 +6,15 @@
 
 </head>
 <body>
+
+<h1>NBA Standing</h1>
 <div id="wrapper">
 <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
 <tr>
 <th>Team</th>
 <th>Win</th>
 <th>Loss</th>
+<th>Action</th>
 </tr>
 
 <tr id="row1">
@@ -21,7 +24,7 @@
 <td>
 <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
 <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
-<input type="button" value="Delete" class="delete" onclick="delete_row('1')">
+<input type="button" id="delete_button1" value="Delete" class="delete" onclick="delete_row('1')">
 </td>
 </tr>
 
@@ -32,7 +35,7 @@
 <td>
 <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
 <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
-<input type="button" value="Delete" class="delete" onclick="delete_row('2')">
+<input type="button" id="delete_button2" value="Delete" class="delete" onclick="delete_row('2')">
 </td>
 </tr>
 
@@ -43,7 +46,7 @@
 <td>
 <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3')">
 <input type="button" id="save_button3" value="Save" class="save" onclick="save_row('3')">
-<input type="button" value="Delete" class="delete" onclick="delete_row('3')">
+<input type="button" id="delete_button3" value="Delete" class="delete" onclick="delete_row('3')">
 </td>
 </tr>
 
@@ -73,7 +76,7 @@ removeSaveBtns();
 function edit_row(no)
 {
  document.getElementById("edit_button"+no).style.display="none";
- document.getElementById("save_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="";
   
  var name=document.getElementById("name_row"+no);
  //var country=document.getElementById("country_row"+no);
@@ -98,8 +101,10 @@ function save_row(no)
  //document.getElementById("country_row"+no).innerHTML=country_val;
  //document.getElementById("age_row"+no).innerHTML=age_val;
 
- document.getElementById("edit_button"+no).style.display="block";
+
  document.getElementById("save_button"+no).style.display="none";
+  document.getElementById("edit_button"+no).style.display="";
+
 }
 
 function delete_row(no)
@@ -128,7 +133,7 @@ var new_name=document.getElementById("new_name").value;
 
  var table=document.getElementById("data_table");
  var table_len=(table.rows.length)-1;
- var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'><button onclick='addOne(this)'>Click Here!</button><span>0</span></td><td id='age_row"+table_len+"'><button class='but' onclick='addOne(this)'>Click Here!</button><span>0</span></td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'><button onclick='addOne(this)'>Click Here!</button><span>0</span></td><td id='age_row"+table_len+"'><button class='but' onclick='addOne(this)'>Click Here!</button><span>0</span></td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' id='delete_button"+table_len+"' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
 
 
  document.getElementById("new_name").value="";
@@ -149,6 +154,60 @@ removeSaveBtns();
 
 
 <style>/* CSS */
+
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+section{
+  margin: 50px;
+}
+
+
+
 button {
   background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
   border: 0;
