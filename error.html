@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>Tee Time Sign-up Form</h1>
+    <form>
+      <div id="teeDate">
+        Date:<input type="date" id="date" name="date" /><br />
+        <button id="teeTime">Submit</button><br />
+      </div>
+    </form>
+    <script type="text/javascript">
+      var button = document.getElementById("teeTime");
+
+      function validateDate(value) {
+        if (value === "") {
+          window.alert("Error");
+          return false;
+        }
+      }
+
+      button.addEventListener("click", function (e) {
+        var value = document.getElementById("date").value;
+        validateDate(value);
+      });
+    </script>
+  </body>
+</html>
