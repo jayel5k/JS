@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+function sortTable(tableClass, n) {
+var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+
+table = document.getElementsByClassName(tableClass)[0];
+switching = true;
+dir = "asc";
+while (switching) {
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+                var cmpX=isNaN(parseInt(x.innerHTML))?x.innerHTML.toLowerCase():parseInt(x.innerHTML);
+                var cmpY=isNaN(parseInt(y.innerHTML))?y.innerHTML.toLowerCase():parseInt(y.innerHTML);
+cmpX=(cmpX=='-')?0:cmpX;
+cmpY=(cmpY=='-')?0:cmpY;
+        if (dir == "asc") {
+            if (cmpX > cmpY) {
+                shouldSwitch= true;
+                break;
+            }
+        } else if (dir == "desc") {
+            if (cmpX < cmpY) {
+                shouldSwitch= true;
+                break;
+            }
+        }
+    }
+    if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        switchcount ++;      
+    } else {
+        if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+        }
+    }
+}
+}
+</script>
+
+<div id="supAll">
+            <table border="1" class="supTable">
+                <tr> 
+                    <th onclick="sortTable('supTable', 0)">Team</th>
+                    <th onclick="sortTable('supTable', 1)">SB Wins</th>
+                    <th onclick="sortTable('supTable', 2)">SB Losses</th>
+                    <th onclick="sortTable('supTable', 3)">Last Won</th>
+                </tr>
+                <tr class="nfc nfcWest">
+                    <td>Arizona Cardinals</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcSouth">
+                    <td>Atlanta Falcons</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>-</td>
+                </tr>
+                <tr class="afc afcNorth">
+                    <td>Baltimore Ravens</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>2012</td>
+                </tr>
+                <tr class="afc afcEast">
+                    <td>Buffalo Bills</td>
+                    <td>11</td>
+                    <td>4</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcSouth">
+                    <td>Carolina Panthers</td>
+                    <td>22</td>
+                    <td>2</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcNorth">
+                    <td>Chicago Bears</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1985</td>
+                </tr>
+                <tr class="afc afcNorth">
+                    <td>Cincinnati Bengals</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>-</td>
+                </tr>
+                <tr class="afc afcNorth">
+                    <td>Cleveland Browns</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcEast">
+                    <td>Dallas Cowboys</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1995</td>
+                </tr>
+                <tr class="afc afcWest">
+                    <td>Denver Broncos</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>2015</td>
+                </tr>
+                <tr class="nfc nfcNorth">
+                    <td>Detroit Lions</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcNorth">
+                    <td>Green Bay Packers*</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>2010</td>
+                </tr>
+                <tr class="afc afcSouth">
+                    <td>Houston Texans</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>-</td>
+                </tr>
+                <tr class="afc afcSouth">
+                    <td>Indianapolis Colts</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2006</td>
+                </tr>
+                <tr class="afc afcSouth">
+                    <td>Jacksonville Jaguars</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>-</td>
+                </tr>
+                <tr class="afc afcWest">
+                    <td>Kansas Chiefs*</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1969</td>
+                </tr>
+                <tr class="afc afcWest">
+                    <td>Los Angeles Chargers</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcWest">
+                    <td>Los Angeles Rams</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>1999</td>
+                </tr>
+                <tr class="afc afcEast">
+                    <td>Miami Dolphins</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>1973</td>
+                </tr>
+                <tr class="nfc nfcNorth">
+                    <td>Minnesota Vikings</td>
+                    <td>0</td>
+                    <td>4</td>
+                    <td>-</td>
+                </tr>
+                <tr class="afc afcEast">
+                    <td>New England Patriots</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td>2016</td>
+                </tr>
+                <tr class="nfc nfcSouth">
+                    <td>New Orleans Saints</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2009</td>
+                </tr>
+                <tr class="nfc nfcEast">
+                    <td>New York Giants</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>2011</td>
+                </tr>
+                <tr class="afc afcEast">
+                    <td>New York Jets*</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1968</td>
+                </tr>
+                <tr class="afc afcWest">
+                    <td>Oakland Raiders</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1983</td>
+                </tr>
+                <tr class="nfc nfcEast">
+                    <td>Philadelphia Eagles</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>-</td>
+                </tr>
+                <tr class="afc afcNorth">
+                    <td>Pittsburgh Steelers</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2008</td>
+                </tr>
+                <tr class="nfc nfcWest">
+                    <td>San Francisco 49ers</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>1994</td>
+                </tr>
+                <tr class="nfc nfcWest">
+                    <td>Seattle Seahawks</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2013</td>
+                </tr>
+                <tr class="nfc nfcSouth">
+                    <td>Tampa Bay Buccaneers</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>2002</td>
+                </tr>
+                <tr class="afc afcSouth">
+                    <td>Tennessee Titans</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>-</td>
+                </tr>
+                <tr class="nfc nfcEast">
+                    <td>Washington Redskins</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1991</td>
+                </tr>
+            </table>
+        </div>      
+    </div>
+
+
+</body>
+</html>
