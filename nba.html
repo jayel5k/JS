@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>NBA Standing</h1>
+<h1>Team Standing</h1>
 <div id="wrapper">
 <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
 <tbody>
@@ -22,8 +22,8 @@
 
 <tr id="row2">
 <td id="name_row2">Brooklyn Nets</td>
-<td id="country_row2"><button onclick='addOne(this)'>0</button><button onclick='reset(this)'>-</button></td>
-<td id="age_row2"><button onclick='addOne(this)'>Click Here!</button><span>0</span></td>
+<td id="country_row1"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
+<td id="age_row2"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
 <td>
 <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
 <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
@@ -34,8 +34,8 @@
 
 <tr id="row1">
 <td id="name_row1">Utah Jazz</td>
-<td id="country_row1"><button onclick='addOne(this)'>0</button></td>
-<td id="age_row1"><button onclick='addOne(this)'>Click Here!</button><span>0</span></td>
+<td id="country_row2"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
+<td id="age_row1"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
 <td>
 <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
 <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
@@ -48,8 +48,8 @@
 
 <tr id="row3">
 <td id="name_row3">Oklahoma City Thunder</td>
-<td id="country_row3"><button class="counter" onclick='addOne(this)'>0</button></td>
-<td id="age_row3"><button onclick='addOne(this)'>Click Here!</button><span>0</span></td>
+<td id="country_row3"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
+<td id="age_row3"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
 <td>
 
 <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3')">
@@ -61,8 +61,8 @@
 
 <tr id="row4">
 <td id="name_row4">Kansas City</td>
-<td id="country_row4"><button class="counter" onclick='addOne(this)'>0</button></td>
-<td id="age_row4"><button onclick='addOne(this)'>Click Here!</button><span>0</span></td>
+<td id="country_row2"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
+<td id="age_row4"><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td>
 <td>
 
 <input type="button" id="edit_button4" value="Edit" class="edit" onclick="edit_row('4')">
@@ -78,7 +78,7 @@
 <td><input type="text" id="new_name"></td>
 <td></td>
 <td></td>
-<td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+<td><input type="button" class="add" onclick="add_row();" value="Add Team"></td>
 </tr>
 </tbody>
 </table>
@@ -309,7 +309,7 @@ document.getElementById("row"+no+"").outerHTML="";
 
 function addOne(button) {
 //console.log(button.nextElementSibling.innerHTML)
-var spanEle = button;
+var spanEle = button.previousElementSibling;
 var old = parseInt(spanEle.innerHTML);
 spanEle.innerHTML = old + 1;
 
@@ -317,7 +317,7 @@ spanEle.innerHTML = old + 1;
 
 
 function reset(button) {
-var spanEle = button.previousElementSibling;
+var spanEle = button.previousElementSibling.previousElementSibling;
 var old = parseInt(spanEle.innerHTML);
 spanEle.innerHTML = old - 1;
  }
@@ -367,12 +367,13 @@ return false;
 //var new_country=document.getElementById("new_country").value;
 //var new_age=document.getElementById("new_age").value;
 //if($("#myInput").val()==="") return;
+//<button onclick='addOne(this)'>0d</button>
 
 
 
 var table=document.getElementById("data_table");
 var table_len=(table.rows.length)-1;
-var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'><button onclick='addOne(this)'>0</button></td><td id='age_row"+table_len+"'><button class='but' onclick='addOne(this)'>Click Here!</button><span>0</span></td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' id='delete_button"+table_len+"' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='country_row"+table_len+"'><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td><td id='age_row"+table_len+"'><span>0</span><button onclick='addOne(this)'>+</button><button onclick='reset(this)'>-</button></td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' id='delete_button"+table_len+"' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
 
 
 document.getElementById("new_name").value="";
@@ -418,7 +419,7 @@ border: 1px solid rgba(255,255,255,0.3);
 }
 th{
 padding: 10px 15px;
-text-align: left;
+text-align: center;
 font-weight: 500;
 font-size: 12px;
 color: #fff;
@@ -446,7 +447,7 @@ margin: 50px;
 }
 
 span{
-
+  margin-right: 20px;
   margin-left: 20px;
 }
 
@@ -461,6 +462,7 @@ display: inline-block;
 font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 font-size: 16px;
 font-weight: 500;
+margin:5px;
 line-height: 2.5;
 outline: transparent;
 padding: 0 1rem;
