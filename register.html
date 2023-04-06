@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<script type="text/javascript">
+
+      function validate_form() {
+  var name = document.getElementById("id1").value;
+  var gender = document.getElementsByName("gender");
+  document.getElementById("label1").innerHTML = '';
+  document.getElementById("label2").innerHTML = '';
+  var genValue = '';
+  for (var i = 0; i < gender.length; i++) {
+    if (gender[i].checked) {
+      genValue = gender[i].value;
+    }
+  }
+  if (!name) {
+    document.getElementById("label1").innerHTML = "Enter Name";
+    return false;
+  } else if (name.length < 6) {
+    document.getElementById("label1").innerHTML = "Minimum 6 charactors";
+    return false;
+  } else if (!genValue) {
+    document.getElementById("label2").innerHTML = "Check gender";
+    return false;
+  }
+  return true;
+}
+
+        </script>
+<body>
+      <div align="center">
+  <h1>REGISTRATION</h1>
+  <form action="" method="post" name="reg">
+    <table>
+      <tr>
+        <td>
+          <label>Enter Full Name :</label>
+        </td>
+        <td>
+          <input type="text" id="id1" name="username" placeholder="minimum 6 charactors">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <label style="color:red;" id="label1"></label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Gender :</label>
+        </td>
+        <td>
+          <input type="radio" name="gender" value="female">
+          <label>Femdale</label>
+          <input type="radio" name="gender" value="male">
+          <label>Male</label>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <label style="color:red;" id="label2"></label>
+        </td>
+      </tr>
+    </table>
+    <br/>
+    <button name="submit" value="submit" onclick="return validate_form()">Submit</button>
+  </form>
+</div>
+
+    </body>
+</html>
