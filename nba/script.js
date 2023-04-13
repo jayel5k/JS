@@ -162,51 +162,76 @@ removeSaveBtns();
 
 
 
-function edit_row(no)
-{
+// function edit_row(no)
+// {
 
-document.getElementById("edit_button"+no).style.display="none";
+// document.getElementById("edit_button"+no).style.display="none";
 
-document.getElementById("save_button"+no).style.display="";
+// document.getElementById("save_button"+no).style.display="";
 
-var name=document.getElementById("name_row"+no);
+// var name=document.getElementById("name_row"+no);
 
 
+// var name_data=name.innerHTML;
 
-//var country=document.getElementById("country_row"+no);
-// var age=document.getElementById("age_row"+no);
+// name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
 
-var name_data=name.innerHTML;
-//var country_data=country.innerHTML;
-// var age_data=age.innerHTML;
+// }
 
-name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
-// //country.innerHTML="<input type='text' id='country_text"+no+"' value='"+country_data+"'>";
-// age.innerHTML="<input type='text' id='age_text"+no+"' value='"+age_data+"'>";
+// --------------------------------------
+
+var current_edit_row = 0;
+
+function edit_row(no) {
+  // Close input field in previous edited row
+   var name = document.getElementById("name_row" + no);
+  var name_data = name.innerHTML;
+  
+   if (current_edit_row >= 1 && current_edit_row <= name_data.length) {
+    save_row(current_edit_row);
+  }
+
+  // Open input field in new row
+  document.getElementById("edit_button" + no).style.display = "none";
+  document.getElementById("save_button" + no).style.display = "";
+ 
+  name.innerHTML = "<input type='text' id='name_text" + no + "' value='" + name_data + "'>";
+
+  // Update current edited row number
+ 
+  current_edit_row = no;
+}
+
+function save_row(no) {
+  var name_input = document.getElementById("name_text" + no);
+  if (name_input) {
+    var name_val = name_input.value;
+    document.getElementById("name_row" + no).innerHTML = name_val;
+  }
+
+  document.getElementById("save_button" + no).style.display = "none";
+  document.getElementById("edit_button" + no).style.display = "";
 }
 
 
+// --------------------------------------
+
+// function save_row(no)
+// {
+// var name_val=document.getElementById("name_text"+no).value;
+
+// //var country_val=document.getElementById("country_text"+no).value;
+// //var age_val=document.getElementById("age_text"+no).value;
+
+// document.getElementById("name_row"+no).innerHTML=name_val;
+// //document.getElementById("country_row"+no).innerHTML=country_val;
+// //document.getElementById("age_row"+no).innerHTML=age_val;
 
 
+// document.getElementById("save_button"+no).style.display="none";
+// document.getElementById("edit_button"+no).style.display="";
 
-
-
-function save_row(no)
-{
-var name_val=document.getElementById("name_text"+no).value;
-
-//var country_val=document.getElementById("country_text"+no).value;
-//var age_val=document.getElementById("age_text"+no).value;
-
-document.getElementById("name_row"+no).innerHTML=name_val;
-//document.getElementById("country_row"+no).innerHTML=country_val;
-//document.getElementById("age_row"+no).innerHTML=age_val;
-
-
-document.getElementById("save_button"+no).style.display="none";
-document.getElementById("edit_button"+no).style.display="";
-
-}
+// }
 
 function delete_row(no)
 {
